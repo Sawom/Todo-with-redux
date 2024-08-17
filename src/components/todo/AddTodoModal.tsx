@@ -12,6 +12,7 @@ import { Input } from "../ui/input";
 import { Label } from "../ui/label";
 
 const AddTodoModal = () => {
+  
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -20,27 +21,25 @@ const AddTodoModal = () => {
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
           <DialogTitle>Edit profile</DialogTitle>
-          <DialogDescription>
-            Make changes to your profile here. Click save when you're done.
-          </DialogDescription>
+          <DialogDescription>Add your task</DialogDescription>
         </DialogHeader>
         <div className="grid gap-4 py-4">
           <div className="grid grid-cols-4 items-center gap-4">
-            <Label htmlFor="name" className="text-right">
-              Name
+            <Label htmlFor="task" className="text-right">
+              Task
             </Label>
             <Input
-              id="name"
+              id="task"
               defaultValue="Pedro Duarte"
               className="col-span-3"
             />
           </div>
           <div className="grid grid-cols-4 items-center gap-4">
-            <Label htmlFor="username" className="text-right">
-              Username
+            <Label htmlFor="description" className="text-right">
+              Description
             </Label>
             <Input
-              id="username"
+              id="description"
               defaultValue="@peduarte"
               className="col-span-3"
             />
