@@ -1,10 +1,12 @@
 import { Button } from "../ui/button";
+import todoSlice from './../../redux/features/todoSlice';
 
 const TodoCard = () => {
     return (
         <div className="bg-white flex rounded-md justify-between items-center p-4 border">
             <input type="checkbox" />
             <p className="font-semibold"> Todo title </p>
+            {/* <p>Time</p> */}
             <p> description</p>
             <div className="space-x-5">
                 <Button className="bg-red-500">
