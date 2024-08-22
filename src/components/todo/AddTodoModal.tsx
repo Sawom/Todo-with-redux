@@ -22,7 +22,7 @@ const AddTodoModal = () => {
   const onSubmit = (e: FormEvent) => {
     e.preventDefault();
     const randomString = Math.random().toString(36).substring(2, 7);
-
+    // samner 0. ei 2ta katanor jnno substring use kora
     const taskDetails = {
       id: randomString,
       title: task,
