@@ -2,18 +2,17 @@ import {
   Dialog,
   DialogContent,
   DialogDescription,
-  DialogFooter,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import { addTodo } from "@/redux/features/todoSlice";
+import { useAppDispatch } from "@/redux/hooks";
+import { DialogClose } from "@radix-ui/react-dialog";
 import { FormEvent, useState } from "react";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 import { Label } from "../ui/label";
-import { DialogClose } from "@radix-ui/react-dialog";
-import { useAppDispatch } from "@/redux/hooks";
-import { addTodo } from "@/redux/features/todoSlice";
 
 const AddTodoModal = () => {
   const [task, setTask] = useState("");
@@ -22,11 +21,13 @@ const AddTodoModal = () => {
 
   const onSubmit = (e: FormEvent) => {
     e.preventDefault();
+    const randomString = Math.random().toString(36).substring(2, 7);
 
     const taskDetails = {
+      id: randomString,
       title: task,
       description: description,
-    }
+    };
 
     dispatch(addTodo(taskDetails));
   };
@@ -52,7 +53,6 @@ const AddTodoModal = () => {
             <Input
               onBlur={(e) => setTask(e.target.value)}
               id="task"
-              defaultValue="Pedro Duarte"
               className="col-span-3"
             />
           </div>
@@ -63,13 +63,12 @@ const AddTodoModal = () => {
             <Input
               onBlur={(e) => setDescription(e.target.value)}
               id="description"
-              defaultValue="@peduarte"
               className="col-span-3"
             />
           </div>
           <div className="flex justify-end">
             <DialogClose asChild>
-                <Button type="submit">Save changes</Button>
+              <Button type="submit">Save changes</Button>
             </DialogClose>
           </div>
         </form>

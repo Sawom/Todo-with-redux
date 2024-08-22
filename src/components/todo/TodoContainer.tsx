@@ -1,9 +1,12 @@
+import { useAppSelector } from "@/redux/hooks";
 import { Button } from "../ui/button";
 import AddTodoModal from "./AddTodoModal";
 import TodoCard from "./TodoCard";
 import TodoFilter from "./TodoFilter";
 
 const TodoContainer = () => {
+    const {todos} = useAppSelector((state)=> state.todos )
+
     return (
         <div>
             <div className="flex justify-between mb-5">
@@ -12,13 +15,13 @@ const TodoContainer = () => {
             </div>
 
             <div className="bg-primary-gradient w-full h-full rounded-xl p-3 space-y-2">
-                <TodoCard></TodoCard>
-                <TodoCard></TodoCard>
-                <TodoCard></TodoCard>
-                
 
                 <div className="bg-white text-2xl font-bold p-5 flex justify-center items-center">
-                    <p>there is no task pending</p>
+                    {
+                        todos.map((item)=>{
+                            <TodoCard title={item.title} description={item.description} ></TodoCard>
+                        })
+                    }
                 </div>
                 
                 
